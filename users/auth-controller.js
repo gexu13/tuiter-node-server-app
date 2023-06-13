@@ -30,7 +30,12 @@ const AuthController = (app) => {
     const profile = (req, res) => {
         const currentUser = req.session['currentUser'];
         if(currentUser) {
-            res.json(currentUser);
+            const updatedUser = usersDao.findUserByUsername(currentUser.username);
+            if (updatedUser === currentUser) {
+                res.json(currentUser);
+            } else {
+                res.json(updatedUser);
+            }
         } else {
             res.sendStatus(404);
         }
