@@ -34,5 +34,5 @@ HelloController(app);
 UserController(app);
 AuthController(app);
 
-app.listen(4000)
+app.listen(process.env.PORT || 4000);
 
