@@ -20,8 +20,9 @@ const app = express();
 app.use(
     cors({
       credentials: true,
-      origin: "http://localhost:3000",
+      // origin: "http://localhost:3000",
       // origin: "https://a5--sparkling-gingersnap-3a0ae5.netlify.app",
+      origin: "https://a6--sparkling-gingersnap-3a0ae5.netlify.app"
     })
    );
 
