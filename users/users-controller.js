@@ -51,18 +51,18 @@ const deleteUser = async (req, res) => {
     res.json(status);
 }
 
-// const updateUser = async (req, res) => {
-//     const userId = req.params.uid;
-//     const updates = req.body;
-//     return await usersDao.updateUser(userId, updates);
-// }
 const updateUser = async (req, res) => {
-    const id = req.params.id;
-    const status = await usersDao.updateUser(id, req.body);
-    const user = await usersDao.findUserById(id);
-    req.session["currentUser"] = user;
-    res.json(status);
-};
+    const userId = req.params.uid;
+    const updates = req.body;
+    return await usersDao.updateUser(userId, updates);
+}
+// const updateUser = async (req, res) => {
+//     const id = req.params.id;
+//     const status = await usersDao.updateUser(id, req.body);
+//     const user = await usersDao.findUserById(id);
+//     req.session["currentUser"] = user;
+//     res.json(status);
+// };
   
 
 export default UserController;

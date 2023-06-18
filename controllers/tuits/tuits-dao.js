@@ -1,7 +1,13 @@
 import tuitsModel from "./tuits-model.js";
 
 export const findAllTuits = () => {
-    return tuitsModel.find();
+    return tuitsModel.find()
+                     .populate("author", "username")
+                     .exec();
+};
+
+export const findTuitsByAuthor = (author) => {
+    return tuitsModel.find({author: author});
 };
 
 export const createTuit = (tuit) => {

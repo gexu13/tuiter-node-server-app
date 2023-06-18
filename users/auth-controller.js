@@ -54,12 +54,13 @@ const AuthController = (app) => {
         const currentUser = req.session['currentUser'];
         if(currentUser) {
             const updates = req.body;
-            const updatedUser = await usersDao.updateUser(currentUser._id, updates);
-            res.json(updates);
+            const status = await usersDao.updateUser(currentUser._id, updates);
+            const user = await usersDao.findUserById(currentUser._id);
+            req.session['currentUser'] = user;
+            res.json(status);
             return;
         }
         res.sendStatus(403);
-        
     };
 
 
