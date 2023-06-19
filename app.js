@@ -14,13 +14,13 @@ mongoose.connect(CONNECTION_STRING);
 
 
 const app = express();
-
+app.set("trust proxy", 1);
 app.use(
     cors({
       credentials: true,
-      origin: "http://localhost:3000",
+      // origin: "http://localhost:3000",
       // origin: "https://a5--sparkling-gingersnap-3a0ae5.netlify.app",
-      // origin: "https://a6--sparkling-gingersnap-3a0ae5.netlify.app"
+      origin: "https://a6--sparkling-gingersnap-3a0ae5.netlify.app"
     })
    );
 
@@ -29,7 +29,12 @@ app.use(
     session({
       secret: "any string",
       resave: false,
+      proxy: true,
       saveUninitialized: true,
+      cookie: {
+        sameSite: "none",
+        secure: true,
+      },
     })
    );
    
